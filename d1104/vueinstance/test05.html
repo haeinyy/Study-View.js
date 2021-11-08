@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{message}}</div>  <!-- ${message} -->
+        <div v-text="'message : '+message"></div>  <!--문자열로 출력-->
+        <div v-html="`message : ${message}`"></div>  <!--``은 문자열로 인식-->
+        <div>{{ count+10 }}</div>
+        <div>{{ count>10? count**3 : count*5 }}</div>
+        <div>{{ msg.split('').reverse().join('') }}</div>
+    </div>
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    message : "<h2>Hello Vue!!</h2>",
+                    count : 10,
+                    msg : "Hello"
+                }
+            },
+        }); // vue 라는 객체를 만들어? 화면에 보이는 view와 data를 연결
+        console.log(vue.message);
+    </script>
+</body>
+</html>

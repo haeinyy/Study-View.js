@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>  <!-- ${message} -->
+    </div>
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            // data : {
+            //     message : "Hello Vue!!"
+            // }
+            data() {
+                return {
+                    message : "Hello Vue!!"
+                }
+            },
+            template : '<h1>Hello</h1>' // 태그안에 content가 있더라도 template을 view의 화면으로 사용
+        }); // vue 라는 객체를 만들어? 화면에 보이는 view와 data를 연결
+        console.log(vue.message);
+    </script>
+</body>
+</html>

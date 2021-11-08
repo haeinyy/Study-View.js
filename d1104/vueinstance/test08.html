@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div :id="idValue">v-bind...</div>
+        <button :[key]="idValue">눌러</button> <!-- 속성의 이름오 binding 가능 -->
+        <a v-bind:href="link1">싸피로 바로가기</a> <!-- 변수가 가진 값을 가져와서 사용해라 -->
+        <a :href="link2">네이버로 바로가기</a> <!-- v-bind == : -->
+    </div>
+    <script>
+        new Vue({
+            el : "#app",
+            data() {
+                return {
+                    idValue : "test-id",
+                    key: "id",
+                    link1 : "http://www.ssafy.com",
+                    link2 : "http://www.naver.com",
+                }
+            },
+        });
+    </script>
+</body>
+</html>

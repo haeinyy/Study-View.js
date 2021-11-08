@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>computed - count : {{ computedCount }}</h2>
+      <input type="button" value="증가" @click="countComputed++" />
+      <input type="button" value="감소" @click="countComputed--" />
+      <h2>methods - count : {{ methodsCount() }}</h2>
+      <input type="button" value="증가" @click="countMethods++" />
+      <input type="button" value="감소" @click="countMethods--" />
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          countComputed: 0, // 이 값이 바뀌기 전까지 computed는 호출되지 않음
+          countMethods: 0,
+        },
+        computed: {
+          computedCount: function () {
+            console.log("computedCount Call");
+            return this.countComputed;
+          },
+        },
+        methods: { // method는 update로 렌더링 되면 계속 호출 됨 => 코드가 길어지면..?? 너무 비효율적
+          methodsCount: function () {
+            console.log("methodsCount call");
+            return this.countMethods;
+          },
+        },
+        updated() {
+          // 화면 전체 div가 업데이트되기 때문에 methods는 계속 실행된다.
+          console.log("updated!!");
+        },
+      });
+    </script>
+  </body>
+</html>
