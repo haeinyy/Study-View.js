@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const todosURL = "https://jsonplaceholder.typicode.com/todos";
+        
+        async function getTodo(todosURL){
+            const response = await axios.get(todosURL); // 대기 상태 빠지는것 막기위해 await
+                                                        // 끝날떄까지 기다림
+            console.log(response);
+            const id = response.data[0].id;
+            const todo = await axios.get(`${todosURL}/${id}`);
+            console.log(todo);
+            console.log(todo.data.title);
+        }
+        getTodo(todosURL).catch(error => {
+            console.log("error : "+error);
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

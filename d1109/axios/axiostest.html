@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const todosURL = "https://jsonplaceholder.typicode.com/todos";
+        
+        // const xhr = new XMLHttpRequest();
+        // xhr.open("GET", todosURL);  // 자스와 서버를 연결
+        // xhr.send();
+
+        // // 서버에서 데이터를 얻어올동안 안기다려줌...
+        // // console에 아무것도 안나옴
+        // // const response = xhr.response;
+        // // console.log(response);
+        // xhr.onload = () => {
+        //     if(xhr.status===200){ // 잘 실행됬다면
+        //         const response = xhr.response;
+        //         console.log(response);
+        //     }
+        // }
+
+        // axios
+        const promise = axios.get(todosURL);
+        console.log(promise);
+
+        promise
+            .then((response) =>{
+                console.log(response);
+                return response.data[0].id;
+            })
+            .then((id) =>{
+                console.log(id);
+                return axios.get(`${todosURL}/${id}`)
+            })
+            .then((todo) =>{
+                console.log(todo);
+            });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
