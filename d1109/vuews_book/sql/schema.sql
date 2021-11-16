@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS comments (
   isbn char(12) NOT NULL,
   PRIMARY KEY (comment_no),
   KEY comment_isbn_idx (isbn),
-  CONSTRAINT comment_isbn FOREIGN KEY (isbn) REFERENCES book (isbn)
+  CONSTRAINT comment_isbn FOREIGN KEY (isbn) REFERENCES book (isbn) -- ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_as_cs;
 
 SELECT * FROM book;
